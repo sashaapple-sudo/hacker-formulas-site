@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Подготовка к ЕГЭ — Сайт учителя информатики{% endblock %}
+
+{% block content %}
+<h2>Подготовка к ЕГЭ по информатике</h2>
+<p>Здесь собрана структура экзамена и материалы по каждому заданию. Все темы соответствуют <strong>кодификатору и спецификации ФИПИ</strong>.</p>
+
+<div class="ege-levels">
+    <div class="level-card">
+        <h3>🟩 Базовый уровень (1–10, 19)</h3>
+        <p>Задания на проверку основных понятий и простых алгоритмов. Главное — внимательность и знание формул.</p>
+        <div class="task-grid">
+            {% for num in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 19] %}
+            <div class="task-badge">
+                <span class="task-num">{{ num }}</span>
+                <span class="task-desc">Тема {{ num }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="level-card">
+        <h3>🟨 Повышенный уровень (11–18, 20, 22, 23)</h3>
+        <p>Задания, где нужно комбинировать знания и строить более сложные алгоритмы. Часто требуют работы с файлами или таблицами.</p>
+        <div class="task-grid">
+            {% for num in [11, 12, 13, 14, 15, 16, 17, 18, 20, 22, 23] %}
+            <div class="task-badge">
+                <span class="task-num">{{ num }}</span>
+                <span class="task-desc">Тема {{ num }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="level-card">
+        <h3>🟥 Высокий уровень (21, 24–27)</h3>
+        <p>Самые сложные задачи. Требуют написания полноценного кода (Python/C++), анализа данных и умения оптимизировать алгоритмы.</p>
+        <div class="task-grid">
+            {% for num in [21, 24, 25, 26, 27] %}
+            <div class="task-badge">
+                <span class="task-num">{{ num }}</span>
+                <span class="task-desc">Тема {{ num }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="ege-resources">
+    <h3>📚 Официальные материалы ФИПИ</h3>
+    <p>Для качественной подготовки обязательно используй эти документы:</p>
+    <ul>
+        <li><a href="https://fipi.ru/ege/otkrytyy-bank-zadaniy-ege" target="_blank">Открытый банк заданий ФИПИ</a> — база прототипов задач.</li>
+        <li><a href="https://fipi.ru/ege/demoversii-specifikacii-kodifikatory" target="_blank">Демоверсия, спецификация, кодификатор</a> — структура экзамена и критерии оценивания.</li>
+        <li><a href="https://fipi.ru/navigator-podgotovki" target="_blank">Навигатор самостоятельной подготовки</a> — тематические блоки и рекомендации экспертов.</li>
+    </ul>
+</div>
+
+<div class="teacher-note">
+    <h3>💡 От учителя</h3>
+    <p>На моих занятиях мы разбираем не просто «как решить», а «почему это работает». Особое внимание уделяем заданиям <strong>17, 24, 25, 26, 27</strong> — именно на них ученики теряют больше всего баллов из-за ошибок в логике или синтаксисе.</p>
+    <p>Если какое-то задание вызывает трудности — подходи на консультацию, разберем на примерах.</p>
+</div>
+{% endblock %}

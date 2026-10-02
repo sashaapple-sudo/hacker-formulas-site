@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}ОГЭ — Информатика: разбор задач{% endblock %}
+
+{% block content %}
+<h2>Подготовка к ОГЭ по информатике</h2>
+<p>Материалы структурированы по номерам задач (по демоверсии ФИПИ). Каждый блок содержит теорию и практику для конкретного задания.</p>
+
+<ul class="material-list">
+    {% for m in materials %}
+        <li class="material-item">
+            <div class="item-info">
+                <span class="task-badge">№{{ m.task_num }}</span>
+                <strong>{{ m.title }}</strong>
+                <span class="desc">{{ m.desc }}</span>
+            </div>
+            <a href="{{ m.link }}" class="download-btn" download>Скачать</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+

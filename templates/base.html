@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Сайт учителя информатики{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1> Кабинет информатики</h1>
+        <p>Материалы к урокам, подготовка к ОГЭ и ЕГЭ</p>
+    </header>
+    <nav>
+        <nav>
+    <a href="/">Главная</a>
+    <a href="/about">Обо мне</a>
+    <a href="/materials">Материалы к урокам</a>
+    <a href="/oge">Подготовка к ОГЭ</a>
+    <a href="/ege">Подготовка к ЕГЭ</a>
+    <!-- Сюда нужно добавить строку ниже -->
+    <a href="/formulas">Формулы</a>
+</nav>
+    <main>
+        <!-- Блок полезных ссылок для учеников -->
+        <div class="useful-links">
+            <a href="https://alice.yandex.ru/" target="_blank" class="useful-link-card link-alice">
+                <span class="icon">🤖</span>
+                <span class="link-text">
+                    Алиса AI
+                    <small>Нейросеть поможет с учёбой и вопросами</small>
+                </span>
+            </a>
+            <a href="https://education.yandex.ru/uchebnik/main" target="_blank" class="useful-link-card link-yandex">
+                <span class="icon">📚</span>
+                <span class="link-text">
+                    Яндекс Учебник
+                    <small>Интерактивные уроки и задания по информатике</small>
+                </span>
+            </a>
+        </div>
+
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        &copy; 2026-2027 Личный сайт учителя. Материалы предназначены для образовательных целей.
+    </footer>
+</body>
+</html>
