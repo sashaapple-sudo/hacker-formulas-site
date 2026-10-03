@@ -33,6 +33,30 @@ ege_materials = [
     {"title": "Шаблон: Решение задачи №24 на строки", "link": "/static/files/ege/template_code.py", "desc": "Готовый скелет программы с комментариями"},
 ]
 
+# Теория для ЕГЭ (отдельный словарь, не ломает старые файлы)
+ege_theory = {
+    "1": {
+        "title": "Задача 1: Чтение графиков и таблиц",
+        "theory": [
+            "Внимательно смотри на оси координат: что отложено по X (время/дата), а что по Y (значение).",
+            "Проверяй единицы измерения (тысячи, миллионы, градусы) — это частая ловушка.",
+            "Если просят найти разницу, ищи конкретные значения и вычитай: Максимум − Минимум.",
+            "Если нужно посчитать количество дней/часов выше порога, просто посчитай клетки или точки."
+        ],
+        "example": {
+            "condition": "На графике показано изменение температуры воздуха в течение суток. Определите, сколько часов температура была выше 0°C.",
+            "solution": [
+                "1. Находим на оси Y отметку 0°C.",
+                "2. Смотрим на график: ищем участки, где линия строго выше нуля.",
+                "3. Определяем временные промежутки (например, с 10:00 до 18:00).",
+                "4. Считаем длительность: 18 − 10 = 8 часов.",
+                "5. Записываем ответ."
+            ],
+            "answer": "8"
+        }
+    }
+}
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -52,6 +76,19 @@ def oge():
 @app.route("/ege")
 def ege():
     return render_template("ege.html", materials=ege_materials)
+
+@app.route("/ege-theory")
+def ege_theory_index():
+    # Показываем список задач с теорией
+    return render_template('ege_theory_index.html', tasks=ege_theory)
+
+@app.route("/ege-theory/task/<task_id>")
+def show_ege_theory_task(task_id):
+    # Показываем теорию для конкретной задачи
+    task = ege_theory.get(task_id)
+    if not task:
+        return "Задача не найдена", 404
+    return render_template('ege_theory_task.html', task=task, task_id=task_id)
 
 @app.route('/formulas')
 def formulas():
