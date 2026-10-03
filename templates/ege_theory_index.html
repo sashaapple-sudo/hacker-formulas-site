@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Теория для ЕГЭ</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; background-color: #f4f4f9; color: #333; }
+        h1 { text-align: center; color: #2c3e50; }
+        .nav-bar { text-align: center; margin-bottom: 20px; }
+        .nav-bar a { margin: 0 10px; color: #3498db; text-decoration: none; font-weight: bold; }
+        .task-card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-left: 5px solid #e74c3c;
+        }
+        a.btn { color: #e74c3c; text-decoration: none; font-weight: bold; }
+        a.btn:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <a href="/">Главная</a> | 
+        <a href="/oge">Материалы ОГЭ</a> | 
+        <a href="/ege">Файлы ЕГЭ (шпаргалки)</a>
+    </div>
+
+    <h1>📚 Теория для ЕГЭ: Разбор задач</h1>
+    <p style="text-align:center;">Здесь мы разбираем типовые задачи шаг за шагом.</p>
+    
+    {% for id, data in tasks.items() %}
+        <div class="task-card">
+            <h2>{{ data.title }}</h2>
+            <a href="/ege-theory/task/{{ id }}" class="btn">👉 Изучить теорию и решение</a>
+        </div>
+    {% endfor %}
+</body>
+</html>
