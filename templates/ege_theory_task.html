@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ task.title }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; background-color: #f4f4f9; color: #333; }
+        h1 { color: #2c3e50; border-bottom: 2px solid #ddd; padding-bottom: 10px; }
+        .theory-block, .example-block {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .theory-list li { margin-bottom: 10px; line-height: 1.6; }
+        .example-title { color: #e67e22; font-size: 1.2em; }
+        .solution-steps { list-style-type: decimal; }
+        .answer-box {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        .back-link { display: inline-block; margin-top: 20px; color: #7f8c8d; }
+    </style>
+</head>
+<body>
+    <h1>{{ task.title }}</h1>
+
+    <!-- Блок теории -->
+    <div class="theory-block">
+        <h3>📘 Теория и лайфхаки</h3>
+        <ul class="theory-list">
+            {% for point in task.theory %}
+                <li>{{ point }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Блок примера -->
+    <div class="example-block">
+        <h3 class="example-title">📝 Пример задачи</h3>
+        <p><strong>Условие:</strong> {{ task.example.condition }}</p>
+        
+        <h4>Пошаговое решение:</h4>
+        <ol class="solution-steps">
+            {% for step in task.example.solution %}
+                <li>{{ step }}</li>
+            {% endfor %}
+        </ol>
+
+        <div class="answer-box">
+            Ответ: {{ task.example.answer }}
+        </div>
+    </div>
+
+    <a href="/ege-theory" class="back-link">← Вернуться к списку теорий</a>
+</body>
+</html>
